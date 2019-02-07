@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         String orderDescription = "No orders yet";
 
         // ****** For the Practice Activity, students need to call to OrderPizza here
+        orderDescription = pizzaOrderSystem.OrderPizza("Peperoni", "large", false  );
+        txtTotal.setText(pizzaOrderSystem.getTotalBill().toString());
         // ****** For the Assignment, students will modify the order to fit the type of pizza the user selects using the UI widgets
 
         //display a pop up message for a long period of time
