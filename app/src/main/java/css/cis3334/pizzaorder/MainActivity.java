@@ -1,5 +1,6 @@
 package css.cis3334.pizzaorder;
 
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,15 +22,23 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtPizzasOrdered;
     Spinner spinnerToppings;
 
+    PizzaOrderInterface pizzaOrderSystem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        pizzaOrderSystem = new PizzaOrder(this);
+
         // Set up our radio buttons
         rbSmall = (RadioButton) findViewById(R.id.radioButtonSmall);
         rbMedium = (RadioButton) findViewById(R.id.radioButtonMedium);
         rbLarge = (RadioButton) findViewById(R.id.radioButtonLarge);
+
+        rbSmall.setText("Small -- Price: $" +pizzaOrderSystem.getPrice(Pizza.pizzaSize.SMALL));
+        rbMedium.setText("Medium -- Price: $" +pizzaOrderSystem.getPrice(Pizza.pizzaSize.MEDIUM));
+        rbLarge.setText("Large -- Price: $" +pizzaOrderSystem.getPrice(Pizza.pizzaSize.LARGE));
 
         // Set up the Check Boxes
         chkbxCheese = (CheckBox) findViewById(R.id.checkBoxCheese);
